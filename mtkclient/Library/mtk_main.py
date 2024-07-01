@@ -101,7 +101,7 @@ class ArgHandler(metaclass=LogBase):
         try:
             if args.preloader is not None:
                 config.chipconfig.var1 = getint(args.var1)
-                self.info("O:Var1:\t\t" + args.var1)
+                self.info("O:Var1:\t\t" + hex(config.chipconfig.var1))
         except AttributeError:
             pass
         try:
@@ -184,7 +184,7 @@ class Main(metaclass=LogBase):
                 self.error(f"Error: {stage2file} doesn't exist !")
                 return False
         else:
-            stage2file = os.path.join(mtk.PathConfig.get_payloads_path(), "stage2.bin")
+            stage2file = os.path.join(mtk.pathconfig.get_payloads_path(), "stage2.bin")
         if mtk.preloader.init():
             mtk = mtk.crasher()
             if mtk.port.cdc.pid == 0x0003:
@@ -678,9 +678,9 @@ class Main(metaclass=LogBase):
             plt = PLTools(mtk, self.__logger.level)
             if payloadfile is None:
                 if mtk.config.chipconfig.loader is None:
-                    payloadfile = os.path.join(mtk.PathConfig.get_payloads_path(), "generic_patcher_payload.bin")
+                    payloadfile = os.path.join(mtk.pathconfig.get_payloads_path(), "generic_patcher_payload.bin")
                 else:
-                    payloadfile = os.path.join(mtk.PathConfig.get_payloads_path(), mtk.config.chipconfig.loader)
+                    payloadfile = os.path.join(mtk.pathconfig.get_payloads_path(), mtk.config.chipconfig.loader)
             plt.runpayload(filename=payloadfile)
             if self.args.metamode:
                 mtk.port.run_handshake()

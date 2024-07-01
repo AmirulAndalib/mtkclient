@@ -40,9 +40,9 @@ Issues = "https://github.com/bkerler/mtkclient/issues"
 
 [project.scripts]
 mtk = "mtk:main"
-stage2 = "mtkclient.Tools.stage2:main"
-da_parser = "mtkclient.Tools.da_parser:main"
-brom_to_offs = "mtkclient.Tools.brom_to_offs:main"
+stage2 = "stage2:main"
+da_parser = "Tools.da_parser:main"
+brom_to_offs = "Tools.brom_to_offs:main"
 
 [project.gui-scripts]
 mtk_gui = "mtkclient.mtk_gui:main"
@@ -63,7 +63,7 @@ packages = [
     "mtkclient.Library.Exploit",
     "mtkclient.Library.Filesystem",
     "mtkclient.Library.Hardware",
-    "mtkclient.Tools",
+    "Tools"
 ]
 # We want to install all the files in the package directories...
 include-package-data = true

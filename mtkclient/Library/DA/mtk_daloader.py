@@ -61,8 +61,8 @@ class DAloader(metaclass=LogBase):
             config["socid"] = hexlify(self.config.socid).decode('utf-8')
         config["flashtype"] = self.daconfig.flashtype
         config["flashsize"] = self.daconfig.flashsize
-        if (not self.mtk.config.chipconfig.damode == DAmodes.XFLASH and not
-        self.mtk.config.chipconfig.damode == DAmodes.XML):
+        if (not self.mtk.config.chipconfig.damode == DAmodes.XFLASH and
+                not self.mtk.config.chipconfig.damode == DAmodes.XML):
             config["m_emmc_ua_size"] = self.da.emmc.m_emmc_ua_size
             config["m_emmc_boot1_size"] = self.da.emmc.m_emmc_boot1_size
             config["m_emmc_boot2_size"] = self.da.emmc.m_emmc_boot2_size
@@ -133,7 +133,7 @@ class DAloader(metaclass=LogBase):
             dahash = hashlib.sha1(da2[:hashlen]).digest()
         elif hashmode == 2:
             dahash = hashlib.sha256(da2[:hashlen]).digest()
-        # orighash = da1[hashpos:hashpos + len(dahash)]
+        orighash = da1[hashpos:hashpos + len(dahash)]
         da1[hashpos:hashpos + len(dahash)] = dahash
         return da1
 
